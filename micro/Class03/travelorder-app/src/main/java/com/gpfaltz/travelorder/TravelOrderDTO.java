@@ -1,8 +1,5 @@
 package com.gpfaltz.travelorder;
 
-import com.gpfaltz.flight.Flight;
-import com.gpfaltz.hotel.Hotel;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +10,9 @@ public class TravelOrderDTO {
 	private String sourceAirport;
 	private String destinyAirport;
 	private Integer nights;
-	
+
 	public TravelOrderDTO() {
-		
+
 	}
 
 	private TravelOrderDTO(String sourceAirport, String destinyAirport, Integer nights) {
@@ -26,18 +23,18 @@ public class TravelOrderDTO {
 	}
 
 	public static TravelOrderDTO of(TravelOrder travelorder, Flight flight, Hotel hotel) {
-		
+
 		if (flight == null) {
 			flight = new Flight();
 		}
-		
+
 		if (hotel == null) {
 			hotel = new Hotel();
 		}
-		
-		return new TravelOrderDTO(flight.sourceAirport, flight.destinyAirport, hotel.nights);
+
+		return new TravelOrderDTO(flight.getSourceAirport(), flight.getDestinyAirport(), hotel.getNights());
 	}
-	
+
 	public static TravelOrderDTO of(String sourceAirport, String destinyAirport, Integer nights) {
 		return new TravelOrderDTO(sourceAirport, destinyAirport, nights);
 	}
